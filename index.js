@@ -1,23 +1,25 @@
 function postComment() {
-  let commenter = document.getElementById('commenterName').value;
-  let comment = document.getElementById('commentText').value;
-  let commentTemplate = document.getElementById('comment-template').innerHTML;
-  let templateFn = _.template(commentTemplate);
-  var commentsSection = document.getElementById("comments");
-  commentsSection.innerHTML += templateFn({ 'commenter': commenterName, 'comment': commentText });
+  let pageTemplate = _.template(document.getElementById('page-template').innerHTML);
+  let postTemplate = _.template(document.getElementById('post-template').innerHTML);
+  let postTitle = document.getElementById("postTitle").value;
+  let postAuthor = document.getElementById("postAuthor").value;
+  let post = document.getElementById("postBody").value;
+  document.getElementsByTagName("main")[0].innerHTML += pageTemplate();
+  let section = postTemplate({ 'title': postTitle, 'body': post, 'poster': postAuthor });
 }
 
 function createPost() {
   let commentTemplate = _.template(document.getElementById('comment-template').innerHTML);
   let commentsTemplate = _.template(document.getElementById('comments-template').innerHTML);
   let pageTemplate = _.template(document.getElementById('page-template').innerHTML);
-  var postTitle = document.getElementById("postTitle").value;
-  var postAuthor = document.getElementById("postAuthor").value;
-  var post = document.getElementById("postBody").value;
+  let postTemplate = _.template(document.getElementById('post-template').innerHTML);
+  let postTitle = document.getElementById("postTitle").value;
+  let postAuthor = document.getElementById("postAuthor").value;
+  let post = document.getElementById("postBody").value;
   document.getElementsByTagName("main")[0].innerHTML += pageTemplate();
-  var section = postTemplate({ 'title': postTitle, 'body': post, 'poster': postAuthor });
-  var comments = commentsTemplate();
-  var postElement = document.getElementById("post");
+  let section = postTemplate({ 'title': postTitle, 'body': post, 'poster': postAuthor });
+  let comments = commentsTemplate();
+  let postElement = document.getElementById("post");
   postElement.innerHTML = section;
   postElement.getElementsByTagName("footer")[0].innerHTML = comments;
 }

@@ -7,8 +7,8 @@
     <main>
       <form id="post-form" onsubmit="createPost()">
         <input type="text" id="postTitle">
-        <input type="text" id="commenterName">
-        <input type="text" id="commentText">
+        <input type="text" id="postAuthor">
+        <input type="text" id="postBody">
         <input type="submit">
       </form>
     </main>
@@ -20,8 +20,8 @@
     </script>
     <script id="post-template" type="text/x-lodash-template">
       <article>
-        <header><%- title %></header>
-        <footer><%- commenter %></footer>
+        <header><%- postTitle %></header>
+        <footer><%- poster %></footer>
       </article>
     </script>
     <script id="comments-template" type="text/x-lodash-template">
@@ -35,7 +35,7 @@
     </script>
     <script id="comment-template" type="text/x-lodash-template">
         <div id="comment"><%- comment %></div>
-        <footer><%- commenter %></footer>
+        <footer><%- poster %></footer>
     </script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
